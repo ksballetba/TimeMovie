@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <fade
+        android:duration="1000">
+        <targets android:excludeId="@android:id/statusBarBackground"/>
+    </fade>
+
+    <slide
+        android:duration="1000">
+        <targets android:excludeId="@android:id/statusBarBackground"/>
+    </slide>
+
+</transitionSet>

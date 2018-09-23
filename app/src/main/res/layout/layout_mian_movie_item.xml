@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:id="@+id/movie_item"
+    android:clickable="true"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/movie_item_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
+
+
+        <ImageView
+            android:id="@+id/movie_item_poster"
+            android:scaleType="centerCrop"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:transitionName="movie_poster"/>
+
+        <TextView
+            android:id="@+id/movie_item_info"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/trang_bg"
+            android:textAlignment="textStart"
+            android:textColor="@color/icons"
+            android:textSize="@dimen/material_typography_caption" />
+
+        <TextView
+            android:id="@+id/movie_item_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textColor="@color/score"
+            android:textStyle="bold"
+            android:textSize="@dimen/material_typography_caption" />
+
+
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/movie_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_text"
+        android:maxLines="1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:maxWidth="100dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/material_typography_button"/>
+
+
+    <Button
+        style="@style/Widget.AppCompat.Button"
+        android:id="@+id/home_booking_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/icons"
+        android:elevation="@dimen/cardview_default_elevation" />
+
+</LinearLayout>

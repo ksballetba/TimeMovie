@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/read_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:layout_margin="5dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/comment_item_avatar"
+        android:layout_width="@dimen/material_layout_avatar"
+        android:layout_marginStart="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+        android:layout_height="@dimen/material_layout_avatar"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_toRightOf="@id/comment_item_avatar"
+        android:layout_marginLeft="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/comment_item_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:textSize="@dimen/material_typography_caption"
+            android:textColor="@color/primary_text"
+            android:maxLines="1" />
+
+        <RatingBar
+            android:id="@+id/comment_item_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:isIndicator="true"
+            style="?android:attr/ratingBarStyleSmall"
+            android:theme="@style/RatingBar_CustomColor" />
+
+        <TextView
+            android:id="@+id/comment_item_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:maxLines="3"
+            android:textSize="@dimen/material_typography_body1"
+            android:textColor="@color/primary_text" />
+    </LinearLayout>
+
+</RelativeLayout>

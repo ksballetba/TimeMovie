@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+           android:id="@+id/user_group">
+
+        <item
+            android:id="@+id/nav_ready_pay"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="@string/ready_pay"/>
+
+        <item
+            android:id="@+id/nav_payback"
+            android:icon="@drawable/ic_remove_shopping_cart_black_24dp"
+            android:title="@string/payback"/>
+
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="@string/exit"/>
+
+    </group>
+</menu>

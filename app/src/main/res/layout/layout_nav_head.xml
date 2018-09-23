@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_head"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:layout_height="200dp">
+
+    <ImageView
+        android:id="@+id/nav_headbg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/cinema"
+        android:scaleType="centerCrop"
+        android:fitsSystemWindows="true"/>
+
+    <ImageView
+        android:background="@color/trans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:src="@drawable/avatar"
+        android:id="@+id/nav_headavatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"/>
+
+    <TextView
+        android:id="@+id/nav_headnickname"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:textAlignment="center"
+        android:text="未登录"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/icons" />
+
+    <TextView
+        android:id="@+id/nav_headlocation"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:textAlignment="center"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/icons" />
+
+
+
+</RelativeLayout>

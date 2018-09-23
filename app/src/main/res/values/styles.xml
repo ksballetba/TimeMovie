@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowEnterTransition">@transition/poster_transition</item>
+        <item name="android:windowExitTransition">@transition/poster_transition</item>
+
+    </style>
+
+    <style name="RatingBar_CustomColor" parent="@android:style/Widget.Holo.RatingBar.Indicator">
+        <!--Background Color-->
+        <item name="colorControlNormal">#D7D7D7</item>
+        <!--Progress Color-->
+        <item name="colorControlActivated">#F49800</item>
+    </style>
+
+</resources>

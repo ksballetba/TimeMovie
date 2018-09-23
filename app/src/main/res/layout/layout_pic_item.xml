@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/video_pic"
+    android:scaleType="centerCrop"
+    android:layout_margin="5dp"
+    android:layout_width="172dp"
+    android:layout_height="112dp">
+
+</ImageView>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/read_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/d_movie_item_poster"
+        android:layout_width="61dp"
+        android:layout_height="84dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_toRightOf="@id/d_movie_item_poster"
+        android:layout_marginLeft="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/d_movie_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:textSize="@dimen/material_typography_subheading"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:maxLines="1" />
+
+
+        <TextView
+            android:id="@+id/d_movie_item_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/score"
+            android:textStyle="bold"
+            android:layout_margin="3dp"
+            android:textSize="@dimen/material_typography_caption" />
+
+        <TextView
+            android:id="@+id/d_movie_item_actors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:textSize="@dimen/material_typography_caption"
+            android:textColor="@color/primary_text" />
+    </LinearLayout>
+
+    <Button
+        android:layout_alignParentEnd="true"
+        style="@style/Widget.AppCompat.Button"
+        android:id="@+id/booking_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
+        android:layout_marginTop="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
+        android:textColor="@color/icons"
+        android:elevation="@dimen/cardview_default_elevation" />
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/draw_layout"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activities.MainActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/material_layout_vertical_spacing_tool_bar"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:navigationIcon="@drawable/ic_menu_white_24dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Light">
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+
+        <com.ksballetba.timemovie.ui.widgets.NoScrollViewPager
+            android:id="@+id/main_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </com.ksballetba.timemovie.ui.widgets.NoScrollViewPager>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/main_bnv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/material_component_bottom_navigation_height"
+            android:layout_gravity="bottom"
+            android:background="@color/icons"
+            app:elevation="@dimen/cardview_default_elevation"
+            app:menu="@menu/bottom_menu"
+            app:layout_behavior=".ui.behavior.BottomNavigationBehavior">
+
+        </android.support.design.widget.BottomNavigationView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/layout_nav_head"
+        app:menu="@menu/nav_menu">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

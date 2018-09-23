@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:id="@+id/actor_item"
+    android:clickable="true"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/actor_item_img"
+        android:scaleType="centerCrop"
+        android:layout_width="80dp"
+        android:layout_height="112dp"
+        android:transitionName="album_art"/>
+
+
+    <TextView
+        android:id="@+id/actor_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_text"
+        android:maxLines="1"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:maxWidth="112dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/material_typography_caption"/>
+
+    <TextView
+        android:id="@+id/actor_item_pos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text"
+        android:maxLines="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:maxWidth="112dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/material_typography_caption"/>
+
+
+
+</LinearLayout>

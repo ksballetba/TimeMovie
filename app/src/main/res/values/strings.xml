@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TimeMovie</string>
+    <string name="home">首页</string>
+    <string name="movie">电影</string>
+    <string name="account">我的</string>
+    <string name="cinema">影院</string>
+    <string name="showing">正在热映</string>
+    <string name="coming">即将上映</string>
+    <string name="booking">正在售票</string>
+    <string name="to_book">购票</string>
+    <string name="actors">演职人员</string>
+    <string name="videoandpic">视频剧照</string>
+    <string name="comments">评论</string>
+    <string name="ready_shopping">未消费</string>
+    <string name="ready_pay">待付款</string>
+    <string name="payback">退款</string>
+    <string name="exit">退出登录</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
