@@ -43,17 +43,17 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class HomeFragment : Fragment(),ShowingMovieContract.View,BookingMovieContract.View,ComingMovieContract.View {
+class HomeFragment : Fragment(), ShowingMovieContract.View, BookingMovieContract.View, ComingMovieContract.View {
 
-    lateinit var mBookingMoviePresenter:BookingMoviePresenter
-    lateinit var mShowingMoviePresenter:ShowingMoviePresenter
-    lateinit var mComingMoviePresenter:ComingMoviePresenter
+    lateinit var mBookingMoviePresenter: BookingMoviePresenter
+    lateinit var mShowingMoviePresenter: ShowingMoviePresenter
+    lateinit var mComingMoviePresenter: ComingMoviePresenter
     var mBookingMovieList = mutableListOf<BookingMovieBean.Movy>()
     var mShowingMovieList = mutableListOf<ShowingMovieBean.M>()
     var mComingMovieList = mutableListOf<ComingMovieBean.Moviecoming>()
-    lateinit var mShowingMovieAdapter:HomeShowingMovieAdapter
-    lateinit var mBookingMovieAdapter:HomeBookingMovieAdapter
-    lateinit var mComingMovieAdapter:HomeComingMovieAdapter
+    lateinit var mShowingMovieAdapter: HomeShowingMovieAdapter
+    lateinit var mBookingMovieAdapter: HomeBookingMovieAdapter
+    lateinit var mComingMovieAdapter: HomeComingMovieAdapter
 
     var locationId = "561"
 
@@ -71,58 +71,62 @@ class HomeFragment : Fragment(),ShowingMovieContract.View,BookingMovieContract.V
 
     override fun setData(bean: ShowingMovieBean) {
         mShowingMovieList = bean.ms.toMutableList()
-        mShowingMovieAdapter.update(mShowingMovieList.subList(16,30))
+        mShowingMovieAdapter.update(mShowingMovieList.subList(16, mShowingMovieList.size))
         all_showing_movie.text = "全部${bean.ms.size}部〉"
-        Log.d("debug",bean.ms[0].actors)
     }
 
     override fun setData(bean: BookingMovieBean) {
         mBookingMovieList = bean.movies.toMutableList()
-        mBookingMovieAdapter.update(mBookingMovieList.subList(0,15))
+        mBookingMovieAdapter.update(mBookingMovieList.subList(0, 15))
         all_booking_movie.text = "全部${bean.movies.size}部〉"
     }
 
     override fun setData(bean: ComingMovieBean) {
         mComingMovieList = bean.moviecomings.toMutableList()
-        mComingMovieAdapter.update(mComingMovieList.subList(0,15))
+        mComingMovieAdapter.update(mComingMovieList.subList(0, 15))
         all_coming_movie.text = "全部${bean.moviecomings.size}部〉"
         val bannerList = ArrayList<String>()
-        for(i in 0 until 5){
-            bannerList.add(bean.moviecomings[i].videos[0].image)
+        for (i in 0 until 6) {
+            if (bean.moviecomings[i].videoCount != 0) {
+                bannerList.add(bean.moviecomings[i].videos[0].image)
+            }
         }
         banner.setImages(bannerList).setImageLoader(GlideImageLoader()).start()
         home_refresh.isRefreshing = false
     }
 
-    private fun init(){
+    private fun init() {
         home_refresh.isRefreshing = true
-        mShowingMoviePresenter = ShowingMoviePresenter(context,this)
-        mBookingMoviePresenter = BookingMoviePresenter(context,this)
-        mComingMoviePresenter = ComingMoviePresenter(context,this)
+        mShowingMoviePresenter = ShowingMoviePresenter(context, this)
+        mBookingMoviePresenter = BookingMoviePresenter(context, this)
+        mComingMoviePresenter = ComingMoviePresenter(context, this)
         mShowingMoviePresenter.requestData("561")
         mBookingMoviePresenter.requestData("561")
         mComingMoviePresenter.requestData("561")
         val showingLayoutManager = LinearLayoutManager(context)
         showingLayoutManager.orientation = LinearLayoutCompat.HORIZONTAL
         home_showing_movie_rec.layoutManager = showingLayoutManager
-        mShowingMovieAdapter = HomeShowingMovieAdapter(mShowingMovieList){idx->
-            jumpToMovieDetail(locationId,mShowingMovieList[idx+16].id.toString(),mShowingMovieList[idx].wantedCount.toString())
+        mShowingMovieAdapter = HomeShowingMovieAdapter(mShowingMovieList) { idx ->
+            jumpToMovieDetail(locationId, mShowingMovieList[idx + 16].id.toString(), mShowingMovieList[idx+16].wantedCount.toString(),
+                    mShowingMovieList[idx+16].tCn)
         }
         home_showing_movie_rec.adapter = mShowingMovieAdapter
 
         val bookingLayoutManager = LinearLayoutManager(context)
         bookingLayoutManager.orientation = LinearLayoutCompat.HORIZONTAL
         home_booking_movie_rec.layoutManager = bookingLayoutManager
-        mBookingMovieAdapter = HomeBookingMovieAdapter(mBookingMovieList){idx->
-            jumpToMovieDetail(locationId,mBookingMovieList[idx].movieId.toString(),mBookingMovieList[idx].wantedCount.toString())
+        mBookingMovieAdapter = HomeBookingMovieAdapter(mBookingMovieList) { idx ->
+            jumpToMovieDetail(locationId, mBookingMovieList[idx].movieId.toString(), mBookingMovieList[idx].wantedCount.toString(),
+                    mBookingMovieList[idx].titleCn)
         }
         home_booking_movie_rec.adapter = mBookingMovieAdapter
 
         val comingLayoutManager = LinearLayoutManager(context)
         comingLayoutManager.orientation = LinearLayoutCompat.HORIZONTAL
         home_coming_movie_rec.layoutManager = comingLayoutManager
-        mComingMovieAdapter = HomeComingMovieAdapter(mComingMovieList){idx->
-            jumpToMovieDetail(locationId,mComingMovieList[idx].id.toString(),mComingMovieList[idx].wantedCount.toString())
+        mComingMovieAdapter = HomeComingMovieAdapter(mComingMovieList) { idx ->
+            jumpToMovieDetail(locationId, mComingMovieList[idx].id.toString(), mComingMovieList[idx].wantedCount.toString(),
+                    mComingMovieList[idx].title)
         }
         home_coming_movie_rec.adapter = mComingMovieAdapter
 
@@ -133,16 +137,17 @@ class HomeFragment : Fragment(),ShowingMovieContract.View,BookingMovieContract.V
         }
     }
 
-    private fun jumpToMovieDetail(locationId:String,movieId:String,wantedCount:String){
-        val intent = Intent(activity,MovieDetailActivity::class.java)
-        intent.putExtra("location_id",locationId)
-        intent.putExtra("movie_id",movieId)
-        intent.putExtra("wanted_count",wantedCount)
+    private fun jumpToMovieDetail(locationId: String, movieId: String, wantedCount: String,movieTitle:String) {
+        val intent = Intent(activity, MovieDetailActivity::class.java)
+        intent.putExtra("location_id", locationId)
+        intent.putExtra("movie_id", movieId)
+        intent.putExtra("wanted_count", wantedCount)
+        intent.putExtra("movie_title",movieTitle)
         startActivity(intent)
     }
 }
 
-class GlideImageLoader: ImageLoader(){
+class GlideImageLoader : ImageLoader() {
     override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
         Glide.with(context!!).load(path).into(imageView!!)
     }

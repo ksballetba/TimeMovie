@@ -18,6 +18,8 @@ import retrofit2.http.Query
 interface ApiService{
     companion object {
         val MOVIE_BASEURL="https://api-m.mtime.cn/"
+        val DETAIL_BASEURL=" https://ticket-api-m.mtime.cn/movie/"
+        val THEATER_BASEURL = "http://theater.mtime.com/"
     }
 
     @GET("PageSubArea/HotPlayMovies.api")

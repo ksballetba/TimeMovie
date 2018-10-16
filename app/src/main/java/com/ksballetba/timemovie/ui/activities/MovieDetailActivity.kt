@@ -1,8 +1,10 @@
 
 package com.ksballetba.timemovie.ui.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.annotation.UiThread
 import android.support.v7.widget.LinearLayoutCompat
 import android.support.v7.widget.LinearLayoutManager
@@ -24,6 +26,8 @@ import com.ksballetba.timemovie.ui.adapters.MovieCommentsAdapter
 import com.ksballetba.timemovie.ui.adapters.StagePicAdapter
 import com.ksballetba.timemovie.ui.widgets.AppBarStateChangeListener
 import com.ksballetba.timemovie.utils.ImageUtils
+import com.ksballetba.timemovie.utils.getShowingCinemas
+import com.ksballetba.timemovie.utils.isActivityDestroyed
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.doAsync
@@ -54,6 +58,11 @@ class MovieDetailActivity : AppCompatActivity(),MovieDetailContract.View,MovieCo
         supportActionBar?.title = ""
         val locationId = intent.getStringExtra("location_id")
         val movieId = intent.getStringExtra("movie_id")
+        val movieTitle = intent.getStringExtra("movie_title")
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = sharedPreferences.edit()
+        editor.putString("movie_id",movieId)
+        editor.apply()
         mDetailPresenter = MovieDetailPresenter(this,this)
         movie_detail_refresh.isRefreshing = true
         movie_detail.visibility = View.INVISIBLE
@@ -69,7 +78,6 @@ class MovieDetailActivity : AppCompatActivity(),MovieDetailContract.View,MovieCo
         movie_image_rec.layoutManager = picLayoutManager
         mStagePicAdapter = StagePicAdapter(mStagePicList)
         movie_image_rec.adapter = mStagePicAdapter
-
         mCommentsPresenter = MovieCommentsPresenter(this,this)
         mCommentsPresenter.requestData(movieId)
         val commentsLayoutManager = LinearLayoutManager(this)
@@ -97,6 +105,12 @@ class MovieDetailActivity : AppCompatActivity(),MovieDetailContract.View,MovieCo
             mDetailPresenter.requestData(locationId,movieId)
         }
 
+        fab_pay.setOnClickListener {
+            val intent = Intent(this,ChooseCinemaActivity::class.java)
+            intent.putExtra("movie_chosed_id",movieId)
+            intent.putExtra("movie_chosed_title",movieTitle)
+            startActivity(intent)
+        }
     }
 
     override fun setData(bean: MovieDetailBean) {
@@ -105,25 +119,27 @@ class MovieDetailActivity : AppCompatActivity(),MovieDetailContract.View,MovieCo
                 val blur = ImageUtils(this@MovieDetailActivity)
                 val bgBitmap = Glide.with(applicationContext).asBitmap().load(bean.data.basic.img).submit(720,500).get()
                 uiThread {
-                    Glide.with(this@MovieDetailActivity).load(bean.data.basic.img).into(movie_poster)
-                    Glide.with(this@MovieDetailActivity).load(blur.gaussianBlur(25,bgBitmap)).into(movie_bg)
-                    movie_title.text = bean.data.basic.name
-                    movie_eng_title.text = bean.data.basic.nameEn
-                    movie_coll_title.text = bean.data.basic.name
-                    val sb = StringBuffer()
-                    for(s in bean.data.basic.type){
-                        sb.append("$s ")
+                    if(!isActivityDestroyed(this@MovieDetailActivity)){
+                        Glide.with(this@MovieDetailActivity).load(bean.data.basic.img).into(movie_poster)
+                        Glide.with(this@MovieDetailActivity).load(blur.gaussianBlur(25,bgBitmap)).into(movie_bg)
+                        movie_title.text = bean.data.basic.name
+                        movie_eng_title.text = bean.data.basic.nameEn
+                        movie_coll_title.text = bean.data.basic.name
+                        val sb = StringBuffer()
+                        for(s in bean.data.basic.type){
+                            sb.append("$s ")
+                        }
+                        movie_type.text = sb.toString()
+                        movie_release_country.text = bean.data.basic.releaseArea+"/"+bean.data.basic.mins
+                        movie_release_time.text = bean.data.basic.releaseDate.substring(0,4)+"-"+bean.data.basic.releaseDate.substring(4,6)+"-"+bean.data.basic.releaseDate.substring(6,8)+"上映"
+                        movie_expand_sum.text = bean.data.basic.story
+                        mActorList = bean.data.basic.actors.toMutableList()
+                        mActorAdapter.update(mActorList)
+                        mStagePicList = bean.data.basic.stageImg.list.toMutableList()
+                        mStagePicAdapter.update(mStagePicList)
+                        movie_detail_refresh.isRefreshing = false
+                        movie_detail.visibility = View.VISIBLE
                     }
-                    movie_type.text = sb.toString()
-                    movie_release_country.text = bean.data.basic.releaseArea+"/"+bean.data.basic.mins
-                    movie_release_time.text = bean.data.basic.releaseDate.substring(0,4)+"-"+bean.data.basic.releaseDate.substring(4,6)+"-"+bean.data.basic.releaseDate.substring(6,8)+"上映"
-                    movie_expand_sum.text = bean.data.basic.story
-                    mActorList = bean.data.basic.actors.toMutableList()
-                    mActorAdapter.update(mActorList)
-                    mStagePicList = bean.data.basic.stageImg.list.toMutableList()
-                    mStagePicAdapter.update(mStagePicList)
-                    movie_detail_refresh.isRefreshing = false
-                    movie_detail.visibility = View.VISIBLE
                 }
             }
         }
@@ -142,4 +158,5 @@ class MovieDetailActivity : AppCompatActivity(),MovieDetailContract.View,MovieCo
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

@@ -154,8 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
-                android:layout_marginRight="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
-                >
+                android:layout_marginRight="@dimen/material_component_bottom_sheet_edge_top_bottom_margins">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -198,6 +197,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_margin="@dimen/material_component_bottom_sheet_edge_left_right_margins">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -224,7 +224,8 @@
                             android:layout_marginTop="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
                             android:id="@+id/movie_actors_rec"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="true">
 
                         </android.support.v7.widget.RecyclerView>
 
@@ -237,11 +238,11 @@
                         android:layout_height="1dp"/>
 
                     <LinearLayout
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_margin="@dimen/material_component_bottom_sheet_edge_left_right_margins">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -265,10 +266,13 @@
                         </RelativeLayout>
 
                         <android.support.v7.widget.RecyclerView
-                            android:layout_marginTop="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
                             android:id="@+id/movie_image_rec"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/material_component_bottom_sheet_edge_top_bottom_margins"
+                            android:nestedScrollingEnabled="true">
+
+
                         </android.support.v7.widget.RecyclerView>
 
                     </LinearLayout>

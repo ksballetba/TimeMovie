@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#e94568</color>
-    <color name="primary_dark">#e94568</color>
+    <color name="primary">#FF5252</color>
+    <color name="primary_dark">#F44336</color>
     <color name="primary_light">#FFCDD2</color>
     <color name="accent">#FF5722</color>
-    <color name="score">#ffb222</color>
-    <color name="wanted_count">#0091ea</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="transfont">#dddddd</color>
+    <color name="score">#ffb222</color>
+    <color name="wanted_count">#0091ea</color>
     <color name="end_transbg">#5ab8b8b8</color>
     <color name="start_transbg">#00ffffff</color>
     <color name="trans">#3c000000</color>

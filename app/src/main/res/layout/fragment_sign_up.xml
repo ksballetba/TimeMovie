@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SignUpFragment">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="8dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/sign_up_account_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:counterMaxLength="11">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/sign_up_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/myaccount"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textColor="@color/primary_text" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/sign_up_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleDrawable="@drawable/ic_remove_red_eye_grey_700_24dp"
+                app:passwordToggleEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/sign_up_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/primary_text" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/sign_up_btn"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="@color/primary"
+                android:elevation="0dp"
+                android:text="@string/sign_up"
+                android:textColor="@color/icons" />
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</FrameLayout>

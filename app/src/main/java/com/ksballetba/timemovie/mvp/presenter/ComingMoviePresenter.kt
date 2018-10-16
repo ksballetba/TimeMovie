@@ -1,6 +1,7 @@
 package com.ksballetba.timemovie.mvp.presenter
 
 import android.content.Context
+import android.util.Log
 import com.ksballetba.timemovie.mvp.contract.ComingMovieContract
 import com.ksballetba.timemovie.mvp.model.ComingMovieModel
 import com.ksballetba.timemovie.mvp.model.bean.ComingMovieBean

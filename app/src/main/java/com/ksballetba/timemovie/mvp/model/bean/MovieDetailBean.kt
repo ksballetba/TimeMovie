@@ -1,6 +1,5 @@
 package com.ksballetba.timemovie.mvp.model.bean
 
-import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
@@ -52,7 +51,7 @@ data class MovieDetailBean(
         data class BoxOffice(
             val movieId: Int, // 125805
             val ranking: Int, // 0
-            val todayBox: Int, // 0
+            val todayBox: Long, // 0
             val todayBoxDes: String,
             val todayBoxDesUnit: String,
             val totalBox: Long, // 112780409590
@@ -168,10 +167,5 @@ data class MovieDetailBean(
             val relatedUrl: String, // https://mall-wv.mtime.cn/#!/commerce/list/
             val type: Int // 0
         )
-    }
-    class Deserializer : ResponseDeserializable<MovieDetailBean> {
-        override fun deserialize(content: String): MovieDetailBean? {
-            return Gson().fromJson(content,MovieDetailBean::class.java)
-        }
     }
 }

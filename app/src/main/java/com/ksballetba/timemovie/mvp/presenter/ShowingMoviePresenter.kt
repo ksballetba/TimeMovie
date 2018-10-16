@@ -1,6 +1,7 @@
 package com.ksballetba.timemovie.mvp.presenter
 
 import android.content.Context
+import android.util.Log
 import com.ksballetba.timemovie.mvp.contract.ShowingMovieContract
 import com.ksballetba.timemovie.mvp.model.ShowingMovieModel
 import com.ksballetba.timemovie.mvp.model.bean.ShowingMovieBean
@@ -38,6 +39,7 @@ class ShowingMoviePresenter(context: Context?,view:ShowingMovieContract.View):Sh
                 },
                 onError = {
                     mContext?.toast("网络连接失败，请连接后重试")
+                    Log.d("debug",it.message)
                 }
         )
     }

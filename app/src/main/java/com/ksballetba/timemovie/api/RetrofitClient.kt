@@ -31,6 +31,7 @@ class RetrofitClient private constructor(context: Context,baseUrl:String){
     companion object {
         @Volatile
         var instance:RetrofitClient? = null
+        var instanceDetail:RetrofitClient? = null
 
         fun getInstance(context: Context,baseUrl: String):RetrofitClient{
             if(instance==null){
@@ -41,6 +42,17 @@ class RetrofitClient private constructor(context: Context,baseUrl:String){
                 }
             }
             return instance!!
+        }
+
+        fun getInstanceDetail(context: Context,baseUrl: String):RetrofitClient{
+            if(instanceDetail==null){
+                synchronized(RetrofitClient::class){
+                    if (instanceDetail==null){
+                        instanceDetail = RetrofitClient(context,baseUrl)
+                    }
+                }
+            }
+            return instanceDetail!!
         }
     }
 

@@ -25,7 +25,7 @@
 
         <ImageView
             android:id="@+id/location_icon"
-            android:src="@drawable/ic_location_on_grey_700_24dp"
+            android:src="@drawable/ic_near_me_grey_700_24dp"
             android:layout_width="20dp"
             android:layout_height="20dp" />
 
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
             android:layout_marginStart="3dp"
+            android:maxLength="24"
             android:textSize="@dimen/material_typography_caption" />
 
         <TextView
@@ -58,10 +59,9 @@
         android:layout_marginTop="8dp">
 
         <ImageView
-            android:src="@drawable/ic_phone_grey_700_24dp"
+            android:src="@drawable/ic_drafts_grey_700_24dp"
             android:layout_width="20dp"
             android:layout_height="20dp" />
-
 
         <TextView
             android:id="@+id/cinema_item_tel"
@@ -72,11 +72,7 @@
             android:layout_margin="3dp"
             android:textSize="@dimen/material_typography_caption" />
 
-
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>

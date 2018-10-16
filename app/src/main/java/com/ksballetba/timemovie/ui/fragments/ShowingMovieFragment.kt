@@ -65,7 +65,7 @@ class ShowingMovieFragment : Fragment(),ShowingMovieContract.View {
         showingLayoutManager.orientation = LinearLayoutCompat.VERTICAL
         showing_movie_rec.layoutManager = showingLayoutManager
         mAdapter = ShowingMovieAdapter(mMovieList){idx->
-            jumpToMovieDetail(locationId,mMovieList[idx].id.toString(),mMovieList[idx].wantedCount.toString())
+            jumpToMovieDetail(locationId,mMovieList[idx].id.toString(),mMovieList[idx].wantedCount.toString(),mMovieList[idx].tCn)
         }
         showing_movie_rec.adapter = mAdapter
         showing_movie_refresh.setOnRefreshListener {
@@ -73,11 +73,12 @@ class ShowingMovieFragment : Fragment(),ShowingMovieContract.View {
         }
     }
 
-    private fun jumpToMovieDetail(locationId:String,movieId:String,wantedCount:String){
+    private fun jumpToMovieDetail(locationId:String,movieId:String,wantedCount:String,movieTitle:String){
         val intent = Intent(activity, MovieDetailActivity::class.java)
         intent.putExtra("location_id",locationId)
         intent.putExtra("movie_id",movieId)
         intent.putExtra("wanted_count",wantedCount)
+        intent.putExtra("movie_title",movieTitle)
         startActivity(intent)
     }
 }
