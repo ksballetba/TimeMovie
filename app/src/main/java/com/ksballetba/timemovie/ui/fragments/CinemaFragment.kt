@@ -2,11 +2,16 @@ package com.ksballetba.timemovie.ui.fragments
 
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
+import android.support.v4.util.Pair
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v4.widget.TextViewCompat
 import android.support.v7.widget.LinearLayoutCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputFilter
@@ -14,16 +19,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.amap.api.location.AMapLocationClient
-import com.amap.api.location.AMapLocationClientOption
-import com.amap.api.location.AMapLocationListener
-import com.amap.api.maps.model.Marker
-import com.amap.api.services.core.LatLonPoint
-import com.amap.api.services.core.PoiItem
-import com.amap.api.services.poisearch.PoiResult
-import com.amap.api.services.poisearch.PoiSearch
-import com.github.promeg.pinyinhelper.Pinyin
-import com.github.promeg.tinypinyin.lexicons.android.cncity.CnCityDict
+import android.widget.TextView
 
 import com.ksballetba.timemovie.R
 import com.ksballetba.timemovie.mvp.contract.CinemaContract
@@ -37,9 +33,7 @@ import com.ksballetba.timemovie.ui.adapters.CinemaAdapter
 import kotlinx.android.synthetic.main.fragment_cinema.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_nav_head.*
-import org.jetbrains.anko.toast
-import pub.devrel.easypermissions.AfterPermissionGranted
-import pub.devrel.easypermissions.EasyPermissions
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,7 +67,7 @@ class CinemaFragment : Fragment(),CinemaContract.View {
         cinemaLayoutManager.orientation = LinearLayoutCompat.VERTICAL
         cinema_rec.layoutManager = cinemaLayoutManager
         mAdapter = ChooseCinemaAdapter(mCinemaList){idx->
-            jumpToCinemaDetail(mCinemaList[idx].cname,mCinemaList[idx].showtimepage)
+            jumpToCinemaDetail(mCinemaList[idx].cname,mCinemaList[idx].showtimepage,idx)
         }
         cinema_rec.adapter = mAdapter
         cinema_refresh.isRefreshing = true
@@ -97,7 +91,7 @@ class CinemaFragment : Fragment(),CinemaContract.View {
     }
 
 
-    private fun jumpToCinemaDetail(cinemaName:String,cinemaUrl:String){
+    private fun jumpToCinemaDetail(cinemaName:String,cinemaUrl:String,idx:Int){
         val intent = Intent(activity, CinemaDetailActivity::class.java)
         intent.putExtra("cinema_name",cinemaName)
         intent.putExtra("cinema_url",cinemaUrl)

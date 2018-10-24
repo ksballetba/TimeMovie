@@ -34,7 +34,7 @@ class CinemaDetailTimeAdapter(val mItems:MutableList<CinemaDetailBean.Showtime>,
     override fun onBindViewHolder(holder:ViewHolder, position: Int) {
         fun bind(model:CinemaDetailBean.Showtime){
             holder.startTime.text = model.realtime.substring(model.realtime.length-8,model.realtime.length-3)
-            holder.endTime.text = model.movieEndTime.substring(2,model.movieEndTime.length)
+            holder.endTime.text = if(model.movieEndTime.isNotEmpty()) model.movieEndTime.substring(2,model.movieEndTime.length) else ""
             holder.type.text = model.language+model.version
             holder.hall.text = model.hallName
             holder.ticketPrice.text = model.mtimePrice.toString()+"元"

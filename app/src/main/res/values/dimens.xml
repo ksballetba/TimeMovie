@@ -19,6 +19,8 @@
     <!-- Metrics & Keylines -->
     <!-- https://www.google.com/design/spec/layout/metrics-keylines.html#metrics-keylines-keylines-spacing -->
     <dimen name="material_layout_keylines_screen_edge_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="material_layout_keylines_content_left_margin_from_screen_edge">72dp</dimen>
     <dimen name="material_layout_keylines_horizontal_mobile_margin">16dp</dimen>
     <dimen name="material_layout_vertical_spacing_status_bar">24dp</dimen>

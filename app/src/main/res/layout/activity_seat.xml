@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.SeatActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/seat_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/material_layout_app_bar_height"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+            app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Light">
+
+            <TextView
+                android:id="@+id/seat_movie_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/icons"
+                android:textSize="@dimen/material_typography_title" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/seat_cinema_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="3dp"
+                        android:maxLines="1"
+                        android:textColor="@color/primary_text"
+                        android:textSize="@dimen/material_typography_subheading"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/seat_showdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="3dp"
+                        android:maxLines="1"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/material_typography_caption" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/seat_movie_hall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="3dp"
+                        android:maxLines="1"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/material_typography_caption"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/seat_showtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="3dp"
+                        android:maxLines="1"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/material_typography_caption" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_margin="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.ksballetba.timemovie.ui.widgets.SeatTable
+            android:id="@+id/seat_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/background" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/material_layout_app_bar_height"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/seat_totol_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="20dp"
+            android:maxLines="1"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/material_typography_subheading" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/seat_pay_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:backgroundTint="@color/primary"
+            android:elevation="0dp"
+            android:textSize="@dimen/material_typography_button"
+            android:text="@string/sure_selectedseat"
+            android:textColor="@color/icons" />
+
+
+    </android.support.v7.widget.CardView>
+
+</android.support.design.widget.CoordinatorLayout>

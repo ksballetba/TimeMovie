@@ -26,10 +26,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_timecinema"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_cinema"
+        android:roundIcon="@mipmap/ic_timecinema_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service android:name="com.amap.api.location.APSService" />
@@ -49,7 +50,27 @@
         <activity android:name=".ui.activities.MovieDetailActivity" />
         <activity android:name=".ui.activities.LoginActivity" />
         <activity android:name=".ui.activities.ChooseCinemaActivity" />
-        <activity android:name=".ui.activities.CinemaDetailActivity"></activity>
+        <activity android:name=".ui.activities.CinemaDetailActivity" />
+        <activity android:name=".ui.activities.SeatActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent101510659" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.activities.OrdersActivity"></activity>
     </application>
 
 </manifest>

@@ -40,9 +40,5 @@ class SignInFragment : Fragment() {
             val act = activity as LoginActivity
             act.showSignUp()
         }
-        sign_in_btn.setOnClickListener{
-            val intent = Intent(activity,MainActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

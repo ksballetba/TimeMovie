@@ -25,14 +25,14 @@
         android:id="@+id/nav_headavatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_marginStart="30dp"/>
 
     <TextView
         android:id="@+id/nav_headnickname"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="150dp"
         android:textAlignment="center"
         android:text="未登录"
         android:layout_marginStart="30dp"

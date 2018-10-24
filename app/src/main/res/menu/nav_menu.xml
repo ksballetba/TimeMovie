@@ -5,18 +5,18 @@
            android:id="@+id/user_group">
 
         <item
-            android:id="@+id/nav_ready_pay"
-            android:icon="@drawable/ic_history_black_24dp"
-            android:title="@string/ready_pay"/>
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_credit_card_black_24dp"
+            android:title="@string/wallet"/>
 
         <item
-            android:id="@+id/nav_payback"
-            android:icon="@drawable/ic_remove_shopping_cart_black_24dp"
-            android:title="@string/payback"/>
+            android:id="@+id/nav_order"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="@string/order"/>
 
         <item
             android:id="@+id/nav_exit"
-            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="@string/exit"/>
 
     </group>

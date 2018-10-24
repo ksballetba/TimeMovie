@@ -330,7 +330,8 @@
             android:layout_height="@dimen/material_component_floating_action_button_size"
             android:src="@drawable/ic_shopping_cart_white_24dp"
             android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/material_component_floating_action_button_margin"/>
+            android:layout_margin="@dimen/material_component_floating_action_button_margin"
+            app:layout_behavior=".ui.behavior.FabBehavior"/>
     </android.support.design.widget.CoordinatorLayout>
 
 

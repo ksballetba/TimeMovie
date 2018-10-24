@@ -62,7 +62,8 @@
                         android:textSize="@dimen/material_typography_subheading"
                         android:textColor="@color/secondary_text"
                         android:textStyle="bold"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:transitionName="shared_cinema_item"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

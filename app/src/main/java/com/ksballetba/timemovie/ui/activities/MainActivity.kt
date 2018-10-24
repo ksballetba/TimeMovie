@@ -9,11 +9,15 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.GravityCompat
+import android.transition.Slide
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Gravity
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.TextView
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
@@ -21,17 +25,27 @@ import com.amap.api.services.core.LatLonPoint
 import com.amap.api.services.core.PoiItem
 import com.amap.api.services.poisearch.PoiResult
 import com.amap.api.services.poisearch.PoiSearch
+import com.bumptech.glide.Glide
 import com.github.promeg.pinyinhelper.Pinyin
 import com.github.promeg.tinypinyin.lexicons.android.cncity.CnCityDict
 import com.ksballetba.timemovie.R
+import com.ksballetba.timemovie.ui.activities.LoginActivity.Companion.APP_ID
 import com.ksballetba.timemovie.ui.fragments.CinemaFragment
 import com.ksballetba.timemovie.ui.fragments.HomeFragment
 import com.ksballetba.timemovie.ui.fragments.MovieFragment
 import com.ksballetba.timemovie.utils.*
+import com.tencent.connect.UserInfo
+import com.tencent.connect.common.Constants
+import com.tencent.tauth.IUiListener
+import com.tencent.tauth.Tencent
+import com.tencent.tauth.UiError
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_cinema.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.share
 import org.jetbrains.anko.toast
+import org.json.JSONObject
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
@@ -48,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var cinemaFragment: CinemaFragment
     lateinit var mLocationClient: AMapLocationClient
     lateinit var mLocationOption: AMapLocationClientOption
-
+    lateinit var mTencent: Tencent
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,11 +73,16 @@ class MainActivity : AppCompatActivity() {
             return
         }
         setContentView(R.layout.activity_main)
+        mTencent = Tencent.createInstance(APP_ID,applicationContext)
         initToolbar()
         initFragments()
         initAmap()
     }
 
+    override fun onStart() {
+        showQQUserInfo()
+        super.onStart()
+    }
 
     fun initAmap() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
@@ -111,14 +130,46 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        nav_view.getHeaderView(0).setOnClickListener {
+            if(!mTencent.checkSessionValid(APP_ID)){
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+            } else {
+                toast("切换账号请先退出登录")
+            }
+        }
         nav_view.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_exit -> {
-                    val intent = Intent(this, LoginActivity::class.java)
+                R.id.nav_order->{
+                    val intent = Intent(this,OrdersActivity::class.java)
                     startActivity(intent)
+                }
+                R.id.nav_exit -> {
+                    mTencent.logout(applicationContext)
+                    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("qq_user_avater","meide")
+                    editor.putString("qq_user_nickname","未登录")
+                    editor.apply()
+                    val navAvater = nav_view.getHeaderView(0).findViewById<ImageView>(R.id.nav_headavatar)
+                    val navNickname = nav_view.getHeaderView(0).findViewById<TextView>(R.id.nav_headnickname)
+                    Glide.with(this).load(R.drawable.avatar).into(navAvater)
+                    navNickname.text = "未登录"
                 }
             }
             false
+        }
+    }
+
+    private fun showQQUserInfo(){
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val qqUserAvater = sharedPreferences.getString("qq_user_avater","meide")
+        val qqUserNickname = sharedPreferences.getString("qq_user_nickname","未登录")
+        val navAvater = nav_view.getHeaderView(0).findViewById<CircleImageView>(R.id.nav_headavatar)
+        val navNickname = nav_view.getHeaderView(0).findViewById<TextView>(R.id.nav_headnickname)
+        if(qqUserAvater!="meide"){
+            Glide.with(this).load(qqUserAvater).into(navAvater)
+            navNickname.text = qqUserNickname
         }
     }
 

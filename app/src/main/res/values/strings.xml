@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TimeMovie</string>
+    <string name="app_name">橙子票票</string>
     <string name="home">首页</string>
     <string name="movie">电影</string>
     <string name="account">我的</string>
@@ -15,13 +15,14 @@
     <string name="ready_pay">待付款</string>
     <string name="payback">退款</string>
     <string name="exit">退出登录</string>
+    <string name="order">我的订单</string>
+    <string name="wallet">我的钱包</string>
     <string name="myaccount">账户</string>
     <string name="password">密码</string>
     <string name="create_account">创建账号</string>
     <string name="forget_pwd">忘记密码</string>
     <string name="sign_in">登  录</string>
     <string name="sign_up">注  册</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sure_selectedseat">确定座位</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
