@@ -111,7 +111,7 @@ class CinemaDetailActivity : AppCompatActivity(), CinemaDetailContract.View {
         cinema_detail_movierec.adapter = movieScaleAdapter
         val movieSnapHelper = LinearSnapHelper()
         movieSnapHelper.attachToRecyclerView(cinema_detail_movierec)
-        cinema_detail_movierec.addItemDecoration(GalleryItemDecoration())
+        cinema_detail_movierec.addItemDecoration(GalleryItemDecoration(this))
         mScrollManager = GalleryScrollManager(cinema_detail_movierec) { idx ->
             setMovieRecBg(idx)
             mPosition = idx

@@ -1,14 +1,19 @@
 package com.ksballetba.timemovie.ui.widgets
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Rect
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.util.DisplayMetrics
 
-class GalleryItemDecoration : RecyclerView.ItemDecoration() {
+
+
+class GalleryItemDecoration(val mContext:Context) : RecyclerView.ItemDecoration() {
 
     var mPageMargin = 10 //自定义默认item边距
-    var mLeftPageVisibleWidth = 125 //第一张图片的左边距
+    var mLeftPageVisibleWidth = (pxToDp(mContext.resources.displayMetrics .widthPixels)-100)/2
+    //第一张图片的左边距
 
     override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
         val positon = parent?.getChildAdapterPosition(view) //获得当前item的position
@@ -23,5 +28,9 @@ class GalleryItemDecoration : RecyclerView.ItemDecoration() {
 
     private fun dpToPx(dp: Int): Int {
         return (dp * Resources.getSystem().displayMetrics.density + 0.5f).toInt() //dp转px
+    }
+
+    private fun pxToDp(px: Int): Int {
+        return Math.round(px / (Resources.getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
     }
 }
