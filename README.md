@@ -5,8 +5,6 @@
 
  [apk下载](https://github.com/ksballetba/TimeMovie/blob/master/app/release/app-release.apk)
  
-##### 未进行多机型适配，电影选择View可能有问题，其他功能欢迎体验
-
 
 <div align="center">
 <img src="https://ws1.sinaimg.cn/large/005K79dxgy1fwqifto136j30u01hcaft.jpg" height="500px" alt="图片说明" margin = "20px 20px 20px 20px">
