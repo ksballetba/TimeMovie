@@ -28,7 +28,6 @@ import com.ksballetba.timemovie.ui.adapters.CinemaDetailTimeAdapter
 import com.ksballetba.timemovie.ui.widgets.GalleryItemDecoration
 import com.ksballetba.timemovie.ui.widgets.GalleryScrollManager
 import com.ksballetba.timemovie.utils.ImageUtils
-import com.ksballetba.timemovie.utils.dpToPx
 import com.ksballetba.timemovie.utils.parseStringToDate
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
