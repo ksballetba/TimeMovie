@@ -1,5 +1,6 @@
 # TimeMovie
 
+### 获取影院列表失败的可以把MainActivity里的initAmap里的locationParse方法参数改成（"北京"，"北京市"）
 
 ### ScreenShots
 
